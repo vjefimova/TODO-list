@@ -4,8 +4,24 @@
         <dim3>
             <id>1</id>
             <kuupaev>10.11.2022</kuupaev>
-            <tahtaeg>14.02.2022</tahtaeg>
+            <tahtaeg>16.02.2022</tahtaeg>
             <oppeaine>Multimedia</oppeaine>
+            <info>Joonista tomati</info>
+            <task>Joonista!!!</task>
+        </dim3>
+        <dim3>
+            <id>2</id>
+            <kuupaev>22.11.2022</kuupaev>
+            <tahtaeg>15.01.2022</tahtaeg>
+            <oppeaine>Programeerimine</oppeaine>
+            <info>TODO-list</info>
+            <task>todolist</task>
+        </dim3>
+        <dim3>
+            <id>3</id>
+            <kuupaev>10.11.2022</kuupaev>
+            <tahtaeg>16.02.2022</tahtaeg>
+            <oppeaine>Multimediaaa</oppeaine>
             <info>Joonista tomati</info>
             <task>Joonista!!!</task>
         </dim3>
