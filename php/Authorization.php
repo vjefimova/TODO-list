@@ -1,6 +1,14 @@
 <?php
-?>
+$xml = simplexml_load_file("../xml/users.xml");
 
+if (isset($_POST['submit'])) {
+    foreach($xml->user as $Element) {
+        if ($_POST['email'] == $Element->email && $_POST['password'] == $Element->password){
+            header("Location: ../index.php");
+        }
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -22,19 +30,18 @@
                         <div class="col-md-9 col-lg-8 mx-auto">
                             <h3 class="login-heading mb-4">Welcome back!</h3>
 
-                            <!-- Sign In Form -->
-                            <form>
+                            <form method="post">
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                    <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                                     <label for="floatingInput">Email address</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                    <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
                                     <label for="floatingPassword">Password</label>
                                 </div>
 
                                 <div class="d-grid">
-                                    <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Sign in</button>
+                                    <button class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit" name="submit">Sign in</button>
                                 </div>
 
                             </form>
