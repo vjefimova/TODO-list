@@ -87,7 +87,6 @@ function build_sorter($key) {
                   </select>
                     <input type="submit" name="submit" value="Choose options">
                 </form>
-              <a href="#!" style="color: #23af89;" data-mdb-toggle="tooltip" title="Ascending"><i class="fas fa-sort-amount-down-alt ms-2"></i></a>
             </div>
 
             <?php foreach ($tasks as $Element) :?>
