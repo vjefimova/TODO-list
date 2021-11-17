@@ -1,5 +1,5 @@
 <?php
-$xml = simplexml_load_file("tasks.xml");
+$xml = simplexml_load_file("xml/tasks.xml");
 
 foreach($xml->dim2->dim3 as $Element) {
     $tasks[] = array(
@@ -12,14 +12,22 @@ foreach($xml->dim2->dim3 as $Element) {
     );
 }
 
-if (isset($_POST['tahtaeg'])){
-    usort($tasks, build_sorter('tahtaeg'));
-}
-if (isset($_POST['oppeaine'])){
-    usort($tasks, build_sorter('oppeaine'));
-}
-if (isset($_POST['Task'])){
-    usort($tasks, build_sorter('task'));
+if(isset($_POST['submit'])){
+    if(!empty($_POST['selectoppeaine'])) {
+        foreach($_POST['selectoppeaine'] as $selected){
+            if ($selected == 'tahtaeg'){
+                usort($tasks, build_sorter('tahtaeg'));
+            }
+            if ($selected == 'oppeaine'){
+                usort($tasks, build_sorter('oppeaine'));
+            }
+            if ($selected == 'Task'){
+                usort($tasks, build_sorter('task'));
+            }
+        }
+    } else {
+        echo 'Please select the value.';
+    }
 }
 
 function build_sorter($key) {
@@ -40,7 +48,6 @@ function build_sorter($key) {
     <title>TODO list</title>
 </head>
 <body>
-
 <section class="vh-100">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -71,11 +78,15 @@ function build_sorter($key) {
 
             <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
               <p class="small mb-0 ms-4 me-2 text-muted">Sort</p>
-              <select class="select">
-                <option value="1">Õppeaine</option>
-                <option value="2">tähtaeg</option>
-                <option value="3">Task</option>
-              </select>
+                <form action="#" method="post">
+                  <select class="select" name="selectoppeaine[]">
+                      <option value="" selected>Select item</option>
+                      <option value="oppeaine">Õppeaine</option>
+                      <option value="tahtaeg">tähtaeg</option>
+                      <option value="Task">Task</option>
+                  </select>
+                    <input type="submit" name="submit" value="Choose options">
+                </form>
               <a href="#!" style="color: #23af89;" data-mdb-toggle="tooltip" title="Ascending"><i class="fas fa-sort-amount-down-alt ms-2"></i></a>
             </div>
 
@@ -123,9 +134,7 @@ function build_sorter($key) {
                 </div>
               </li>
             </ul>
-
             <?php endforeach;?>
-
           </div>
         </div>
       </div>

@@ -25,5 +25,13 @@
             <info>Joonista tomati</info>
             <task>Joonista!!!</task>
         </dim3>
+        <dim3>
+            <id>4</id>
+            <kuupaev>10.10.2022</kuupaev>
+            <tahtaeg>16.03.2022</tahtaeg>
+            <oppeaine>Multimediaaa</oppeaine>
+            <info>Teha skulptuuri</info>
+            <task>skulptuur</task>
+        </dim3>
     </dim2>
 </dim1>
