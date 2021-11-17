@@ -49,95 +49,101 @@ function build_sorter($key) {
 </head>
 <body>
 <section class="vh-100">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col">
-        <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
-          <div class="card-body py-4 px-4 px-md-5">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
 
-            <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
-              <i class="fas fa-check-square me-1"></i>
-              <u>My Todo-s</u>
-            </p>
+                <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
+                    <div class="card-body py-4 px-4 px-md-5">
+                        <form action="php/Authorization.php" method="post">
+                            <input class="btn btn-primary" type="submit" value="Logi välja" name="logout">
+                        </form>
+                        <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
+                            <i class="fas fa-check-square me-1"></i>
 
-            <div class="pb-2">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex flex-row align-items-center">
-                    <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1" placeholder="Add new...">
-                    <a href="#!" data-mdb-toggle="tooltip" title="Set due date"><i class="fas fa-calendar-alt fa-lg me-3"></i></a>
-                    <div>
-                      <button type="button" class="btn btn-primary">Add</button>
+                            <u>My Todo-s</u>
+                        </p>
+
+                        <div class="pb-2">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex flex-row align-items-center">
+                                        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1" placeholder="Add new...">
+                                        <a href="#!" data-mdb-toggle="tooltip" title="Set due date"><i class="fas fa-calendar-alt fa-lg me-3"></i></a>
+                                        <div class="kalend">
+                                            <input type="date">
+                                        </div>
+                                        <div class="knopka">
+                                            <button type="button" class="btn btn-primary">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
+                            <p class="small mb-0 ms-4 me-2 text-muted">Sort</p>
+                            <form action="#" method="post">
+                                <select class="select" name="selectoppeaine[]">
+                                    <option value="" selected>Select item</option>
+                                    <option value="oppeaine">Õppeaine</option>
+                                    <option value="tahtaeg">tähtaeg</option>
+                                    <option value="Task">Task</option>
+                                </select>
+                                <input type="submit" name="submit" value="Choose options">
+                            </form>
+                        </div>
+
+                        <?php foreach ($tasks as $Element) :?>
+
+                            <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
+                                <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
+                                    <div class="form-check">
+                                        <input
+                                                class="form-check-input me-0"
+                                                type="checkbox"
+                                                value=""
+                                                id="flexCheckChecked1"
+                                                aria-label="..."
+                                        />
+                                    </div>
+                                </li>
+
+                                <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
+                                    <p class="lead fw-normal mb-0"><p class="text-muted"><?php echo $Element['oppeaine']; ?></p> <?php echo $Element['task']; ?></p>
+                                </li>
+                                <li class="list-group-item px-3 py-1 d-flex align-items-center border-0 bg-transparent">
+                                    <div class="text-end text-muted">
+                                        <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="<?php echo $Element['info']; ?>">
+                                            <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>More info</p></a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item px-3 py-1 d-flex align-items-center border-0 bg-transparent">
+                                    <div class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-light">
+                                        <p class="small mb-0">
+                                            <a href="#!" data-mdb-toggle="tooltip" title="Due on date"> <img src="css/image/pesok2.png" alt="Smiley face" width="15" height="15"></a>
+                                            <?php echo $Element['tahtaeg']; ?>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
+                                    <div class="d-flex flex-row justify-content-end mb-1">
+                                        <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><img src="css/image/edit.png" alt="Smiley face" width="25" height="25"><i class="fas fa-pencil-alt me-3"></i></a>
+                                        <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><img src="css/image/delete.png" alt="" width="25" height="25"><i class="fas fa-trash-alt"></i></a>
+                                    </div>
+                                    <div class="text-end text-muted">
+                                        <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
+                                            <p class="small mb-0"><i class="fas fa-info-circle me-2"></i><?php echo $Element['kuupaev']; ?></p></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        <?php endforeach;?>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-
-            <hr class="my-4">
-
-            <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
-              <p class="small mb-0 ms-4 me-2 text-muted">Sort</p>
-                <form action="#" method="post">
-                  <select class="select" name="selectoppeaine[]">
-                      <option value="" selected>Select item</option>
-                      <option value="oppeaine">Õppeaine</option>
-                      <option value="tahtaeg">tähtaeg</option>
-                      <option value="Task">Task</option>
-                  </select>
-                    <input type="submit" name="submit" value="Choose options">
-                </form>
-            </div>
-
-            <?php foreach ($tasks as $Element) :?>
-
-            <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
-              <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                <div class="form-check">
-                  <input
-                    class="form-check-input me-0"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckChecked1"
-                    aria-label="..."
-                  />
-                </div>
-              </li>
-              <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                <p class="lead fw-normal mb-0"><p class="text-muted"><?php echo $Element['oppeaine']; ?></p> <?php echo $Element['task']; ?></p>
-              </li>
-              <li class="list-group-item px-3 py-1 d-flex align-items-center border-0 bg-transparent">
-                <div class="text-end text-muted">
-                    <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="<?php echo $Element['info']; ?>">
-                      <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>More info</p></a>
-                  </div>
-              </li>
-              <li class="list-group-item px-3 py-1 d-flex align-items-center border-0 bg-transparent">
-                <div class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-light">
-                  <p class="small mb-0">
-                    <a href="#!" data-mdb-toggle="tooltip" title="Due on date">
-                      <i class="fas fa-hourglass-half me-2 text-warning"></i>
-                    </a>
-                    <?php echo $Element['tahtaeg']; ?>
-                  </p>
-                </div>
-              </li>
-              <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
-                <div class="d-flex flex-row justify-content-end mb-1">
-                  <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
-                  <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a>
-                </div>
-                <div class="text-end text-muted">
-                  <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
-                    <p class="small mb-0"><i class="fas fa-info-circle me-2"></i><?php echo $Element['kuupaev']; ?></p></a>
-                </div>
-              </li>
-            </ul>
-            <?php endforeach;?>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 </body>
