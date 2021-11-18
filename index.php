@@ -36,6 +36,18 @@ function build_sorter($key) {
     };
 }
 
+if (isset($_GET['delete'])) {
+    foreach ($xml->dim2 as $task){
+        $dom = new DOMDocument;
+        $dom->loadXML($xml->asXML());
+        $ID = $dom->getElementsByTagName($_GET['delete']);
+    }
+}
+
+if (isset($_GET['edit'])) {
+    echo "edit";
+}
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -130,8 +142,8 @@ function build_sorter($key) {
                                 </li>
                                 <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
                                     <div class="d-flex flex-row justify-content-end mb-1">
-                                        <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><img src="css/image/edit.png" alt="Smiley face" width="25" height="25"><i class="fas fa-pencil-alt me-3"></i></a>
-                                        <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><img src="css/image/delete.png" alt="" width="25" height="25"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="index.php?edit" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><img src="css/image/edit.png" alt="Smiley face" width="25" height="25"></a>
+                                        <a href="index.php?delete=<?=$taskID=$Element['id']?>" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><img src="css/image/delete.png" alt="" width="25" height="25"></a>
                                     </div>
                                     <div class="text-end text-muted">
                                         <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
