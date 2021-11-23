@@ -4,7 +4,6 @@ $xml = simplexml_load_file("xml/tasks.xml");
 foreach($xml->dim2->dim3 as $Element) {
     $tasks[] = array(
         'id'             => (string)$Element ->id,
-        'kuupaev'          => (string)$Element->kuupaev,
         'tahtaeg'           => (string)$Element->tahtaeg,
         'oppeaine'         => (string)$Element->oppeaine,
         'info'            => (string)$Element->info,
@@ -60,102 +59,67 @@ if (isset($_GET['edit'])) {
     <title>TODO list</title>
 </head>
 <body>
-<section class="vh-100">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col">
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Table 07</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-                <div class="card" id="list1" style="border-radius: .75rem; background-color: #eff1f2;">
-                    <div class="card-body py-4 px-4 px-md-5">
-                        <form action="php/Authorization.php" method="post">
-                            <input class="btn btn-primary" type="submit" value="Logi välja" name="logout">
-                        </form>
-                        <p class="h1 text-center mt-3 mb-4 pb-3 text-primary">
-                            <i class="fas fa-check-square me-1"></i>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
-                            <u>My Todo-s</u>
-                        </p>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-                        <div class="pb-2">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="d-flex flex-row align-items-center">
-                                        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1" placeholder="Add new...">
-                                        <a href="#!" data-mdb-toggle="tooltip" title="Set due date"><i class="fas fa-calendar-alt fa-lg me-3"></i></a>
-                                        <div class="kalend">
-                                            <input type="date">
-                                        </div>
-                                        <div class="knopka">
-                                            <button type="button" class="btn btn-primary">Add</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <link rel="stylesheet" href="css/style.css">
 
-                        <hr class="my-4">
-
-                        <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
-                            <p class="small mb-0 ms-4 me-2 text-muted">Sort</p>
-                            <form action="#" method="post">
-                                <select class="select" name="selectoppeaine[]">
-                                    <option value="" selected>Select item</option>
-                                    <option value="oppeaine">Õppeaine</option>
-                                    <option value="tahtaeg">tähtaeg</option>
-                                    <option value="Task">Task</option>
-                                </select>
-                                <input type="submit" name="submit" value="Choose options">
-                            </form>
-                        </div>
-
+</head>
+<body>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section">My Todo-s</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
+                    <p class="small mb-0 ms-4 me-2 text-muted">Sort</p>
+                    <form action="#" method="post">
+                        <select class="select" name="selectoppeaine[]">
+                            <option value="" selected>Select item</option>
+                            <option value="oppeaine">Õppeaine</option>
+                            <option value="tahtaeg">tähtaeg</option>
+                            <option value="Task">Task</option>
+                        </select>
+                        <input type="submit" name="submit" value="Choose options">
+                    </form>
+                </div>
+                <div class="table-wrap">
+                    <table class="table table-bordered table-dark table-hover">
+                        <thead>
+                        <tr>
+                            <th>Õppeaine</th>
+                            <th>Task</th>
+                            <th>Info</th>
+                            <th>Tähtaeg</th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         <?php foreach ($tasks as $Element) :?>
-
-                            <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
-                                <li class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                                    <div class="form-check">
-                                        <input
-                                                class="form-check-input me-0"
-                                                type="checkbox"
-                                                value=""
-                                                id="flexCheckChecked1"
-                                                aria-label="..."
-                                        />
-                                    </div>
-                                </li>
-
-                                <li class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                                    <p class="lead fw-normal mb-0"><p class="text-muted"><?php echo $Element['oppeaine']; ?></p> <?php echo $Element['task']; ?></p>
-                                </li>
-                                <li class="list-group-item px-3 py-1 d-flex align-items-center border-0 bg-transparent">
-                                    <div class="text-end text-muted">
-                                        <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="<?php echo $Element['info']; ?>">
-                                            <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>More info</p></a>
-                                    </div>
-                                </li>
-                                <li class="list-group-item px-3 py-1 d-flex align-items-center border-0 bg-transparent">
-                                    <div class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-light">
-                                        <p class="small mb-0">
-                                            <a href="#!" data-mdb-toggle="tooltip" title="Due on date"> <img src="css/image/pesok2.png" alt="Smiley face" width="15" height="15"></a>
-                                            <?php echo $Element['tahtaeg']; ?>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
-                                    <div class="d-flex flex-row justify-content-end mb-1">
-                                        <a href="index.php?edit" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><img src="css/image/edit.png" alt="Smiley face" width="25" height="25"></a>
-                                        <a href="index.php?delete=<?=$taskID=$Element['id']?>" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><img src="css/image/delete.png" alt="" width="25" height="25"></a>
-                                    </div>
-                                    <div class="text-end text-muted">
-                                        <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
-                                            <p class="small mb-0"><i class="fas fa-info-circle me-2"></i><?php echo $Element['kuupaev']; ?></p></a>
-                                    </div>
-                                </li>
-                            </ul>
+                        <tr>
+                            <th scope="row"><?php echo $Element['oppeaine']; ?></th>
+                            <td><?php echo $Element['task']; ?></td>
+                            <td><?php echo $Element['info']; ?></td>
+                            <td><?php echo $Element['tahtaeg']; ?></td>
+                        </tr>
                         <?php endforeach;?>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </section>
 </body>
+</html>

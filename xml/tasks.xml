@@ -1,36 +1,25 @@
 
-
-
 <dim1>
     <dim2>
-        <user>jefimova@gmail.com</user>
-        <dim3 name="1">
-            <id>1</id>
-            <kuupaev>10.11.2022</kuupaev>
-            <tahtaeg>16.02.2022</tahtaeg>
-            <oppeaine>Multimedia</oppeaine>
-            <info>Joonista tomati</info>
-            <task>Joonista!!!</task>
+        <dim3>
+            <tahtaeg>16.05.2022</tahtaeg>
+            <oppeaine>Vene keel</oppeaine>
+            <info>Teha esitluse</info>
+            <task>Esitlus</task>
         </dim3>
-        <dim3 name="2">
-            <id>2</id>
-            <kuupaev>22.11.2022</kuupaev>
+        <dim3>
             <tahtaeg>15.01.2022</tahtaeg>
             <oppeaine>Programeerimine</oppeaine>
-            <info>TODO-list</info>
-            <task>todolist</task>
+            <info>Teha mobiili tarkvara spordist</info>
+            <task>Mobiili tarkvara</task>
         </dim3>
-        <dim3 name="3">
-            <id>3</id>
-            <kuupaev>10.11.2022</kuupaev>
-            <tahtaeg>16.02.2022</tahtaeg>
-            <oppeaine>Multimediaaa</oppeaine>
-            <info>Joonista tomati</info>
-            <task>Joonista!!!</task>
+        <dim3>
+            <tahtaeg>13.12.2022</tahtaeg>
+            <oppeaine>Koolieksam</oppeaine>
+            <info>Teha erinevad testi</info>
+            <task>Testid</task>
         </dim3>
-        <dim3 name="4">
-            <id>4</id>
-            <kuupaev>10.10.2022</kuupaev>
+        <dim3>
             <tahtaeg>16.03.2022</tahtaeg>
             <oppeaine>Multimediaaa</oppeaine>
             <info>Teha skulptuuri</info>
